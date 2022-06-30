@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static '/Css/style.css' %}">
+  <link rel="stylesheet" href="{% static '/Css/news.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Kun.uz</title>
+</head>
+<body>
+<div class="header">
+    <div class="header-container container">
+        <div class="header-img">
+          <img src="{% static '/Images/img 1.webp' %}" alt="My image">
+        </div>
+        <div class="header-category">
+            <ul class="header-container-category-left">
+                <li class="header-category-item">
+                    <a href="#"><img src="{% static '/Images/kun-uz-logo.svg' %}" alt=""></a>
+                </li>
+            </ul>
+            <ul class="header-category-container">
+              {% for cate in categorys %}
+                <li class="header-category-item">
+                    <a href="{% url 'category' cate.slug %}">{{cate.name}}</a>
+                </li>
+              {% endfor %}
+            </ul>
+                <ul class="header-container-category-right">
+                    <li class="header-category-item">
+                        <a href="#"><img src="{% static '/Images/namuna.png' %}" alt=""></a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <div class="select">
+                        <span class="selected">Uzbekcha</span>
+                        <div class="caret"></div>
+                    </div>
+                    <ul class="menu">
+                        <li class="active menu-item" >Uzbek</li>
+                        <li class="menu-item">Rus</li>
+                        <li class="menu-item" >Ingliz</li>
+                    </ul>
+                </div>
+                <ul class="header-container-category-right1">
+                    <li class="header-category-item1">
+                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</div>
+<!-- header navbar start  -->
+  <div class="header-navbar">
+      <div class="header-navbar-container container">
+          <li class="hudud">Hudud <span class="ttt"></span></li>
+          <li class="region1"><a href="{% url 'region_news' region1.slug %}">{{region1.name}}</a></li>
+          {% for reg in regions %}
+          <li class="region"><a href="{% url 'region_news' reg.slug %}">{{reg.name}}</a></li>
+          {% endfor %}
+      </div>
+  </div>
+<!-- header navbar end  -->
+  {% block content %}
+
+  {% endblock %}
+  
+  <div class="main">
+    <div class="main-container container">
+        {% block left1 %}
+        {% endblock %}
+        {% block content1 %}
+        {% endblock %}
+        {% block right1 %}
+        {% endblock %}
+    </div>
+</div>
+<!-- bottom start  -->
+<div class="bottom">
+  <div class="bottom-container">
+      <div class="bottom-title">
+          <div class="bottom-title-container container">
+              <ul class="bottom-title-left">
+                  <li class="bottom-title-item">
+                      <a href="#">Sayt haqida</a>
+                      <a href="#">RSS</a>
+                      <a href="#">Aloqa</a>
+                      <a href="#">Reklama</a>
+                      <a href="#">Kun mavzulari</a>
+                      <a href="#">Kun.uz Jamoasi</a>
+                  </li>
+              </ul>
+              <ul class="bottom-title-img">
+      <li><img src="../Images/18plus-v2.svg" alt=""></li>
+              </ul>
+          </div>
+        
+      </div>
+      <div class="bottom-text">
+          <div class="bottom-text-container container">
+            <div class="bottom-text-left">
+“KUN.UZ” saytida eʼlon qilingan materiallardan nusxa koʻchirish, tarqatish va boshqa shakllarda foydalanish faqat tahririyat yozma roziligi bilan amalga oshirilishi mumkin.
+Guvohnoma: №0987. Berilgan sanasi: 22.06.2015-yil. Muassis: “WEB EXPERT” MCHJ. Tahririyat manzili: 100043, Toshkent shahri, K. Yormatov koʻchasi, 12-uy. Elektron manzil: info@kun.uz.
+Saytda eʼlon qilinayotgan mualliflik maqolalarida keltirilgan fikrlar muallifga tegishli va ular Kun.uz tahririyati nuqtai nazarini ifoda etmasligi mumkin.
+Ⓣ - maqola va materiallarda qo‘yilgan mazkur belgi ularning tijorat va reklama huquqlari asosida eʼlon qilinganligini bildiradi.
+            </div>
+            <div class="bottom-text-right">
+                  <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                  <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="#"> <i class="fa-brands fa-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#"><i class="fa-solid fa-wifi"></i></a>
+
+
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- bottom end  -->
+
+
+<script src="{% static '/JavaScripts/index.js' %}"></script>
+
+</body>
+
+</html>

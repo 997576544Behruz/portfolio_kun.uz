@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+   <!-- main start  -->
+      {% block left1 %}
+      <div class="main-right">
+        <h4 class="main-news">
+          <i class="fa-solid fa-circle-dot"></i> So'nggi yangiliklar
+        </h4>
+        {% for lat in latestall %}
+        <div class="main-right-news">
+          <a href="{% url 'more_news' lat.slug %}">
+            <div class="main-time1">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span>{{lat.created_at|date:"H:i // d.m.Y"}}</span>
+            </div>
+          </a>
+          <a href="{% url 'more_news' lat.slug %}">
+            <h5 class="main-right-title">{{lat.title}}</h5>
+          </a>
+        </div>
+        {% endfor %}
+        <!-- <div class="more-news">
+          <a href="#">Ko'proq yangiliklar</a>
+          <span><i class="fa-solid fa-arrow-right-long"></i></span>
+        </div> -->
+      </div>
+        {% endblock %}
+
+        {% block content1 %}
+        <div class="main-center">
+            <div class="main-center-container">
+                <h2 class="main-center-title">
+                   {{news11.title}}
+                </h2>
+                <div class="main-center-time">
+                    <div>
+                        <span> <i class="fa-solid fa-calendar-days"></i> {{news11.created_at|date:"H:i/d.m.Y"}}</span>
+                        <span> <i class="fa-solid fa-eye"></i> views:{{news11.views_count}}</span>
+                    </div>
+                </div>
+                <div class="main-center-img">
+                    <img src="../Images/img.jpg" alt="">
+                </div>
+                <div class="main-center-text">
+                    {{news11.content}}
+                </div>
+            </div>
+            <div class="main-teg">
+
+                <a href="#">#OAV</a>
+                <a href="#">#soliq</a>
+            </div>
+        </div>
+        {% endblock %}
+
+        {% block right1 %}
+        <div class="main-right">
+            <h4 class="main-news">
+                <i class="fa-solid fa-circle-dot"></i> Tavsiya etamiz
+            </h4>
+            {% for new in count %}
+            <div class="main-right-news">
+                <a href="{% url 'more_news' new.slug %}">
+                    <div class="main-time1">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>{{new.created_at|date:"H:i // d.m.Y"}}</span>
+                        <span>views:{{new.views_count}}</span>
+                    </div>
+                </a>
+                <a href="{% url 'more_news' new.slug %}">
+                    <h5 class="main-right-title">{{new.title}}</h5>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endblock %}
+
+<!-- main end  -->
+

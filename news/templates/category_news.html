@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="main">
+  <div class="main-container container">
+    <!-- main-left start  -->
+    {% if latest1 %}
+    <div class="main-left">
+      <a href="{% url 'more_news' latest1.slug %}">
+        <div class="main-left1">
+          <div class="main-left-left">
+            <img src="{{latest1.img.url}}" alt="img">
+          </div>
+          <div class="main-left-right">
+            <div class="main-time">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span>{{latest1.created_at|date:"H:i // d.m.Y"}}</span>
+            </div>
+            <h2 class="main-left-title">{{latest1.title}}</h2>
+            <p class="main-left-text">{{latest1.content|truncatechars:"220"}}</p>
+          </div>
+        </div>
+      </a>
+      
+      <!-- main left2 start  -->
+      <div class="main-left2">
+        {% for new in latest %}
+        <div class="main-left2-container">
+          <div class="main-left2-img">
+            <a href="#"><img src="{{new.img.url}}" alt="img1"></a>
+          </div>
+          <div class="main-left2-text">
+            <div class="main-left2-date">
+              <a href="{% url 'more_news' new.slug %}">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>{{new.created_at|date:"H:i // d.m.Y"}}</span>
+              </a>
+            </div>
+            <div class="main-left2-title">
+              <a href="#">
+                {{new.title}}
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- main left2 start  -->
+      <!-- footer start  -->
+      <div class="footer">
+        <div class="footer-container">
+          <div class="footer-title">
+            <a href="#"><i class="fa-solid fa-circle-dot"></i> Muharrir tanlovi</a>
+            <a href="#" class="footer-all">Barchasi</a>
+          </div>
+          <div class="footer-main">
+            {% for new in latest6 %}
+            <div class="footer-main-container">
+              <div class="footer-main-img">
+                <a href="{% url 'more_news' new.slug %}"><img src="{{new.img.url}}" alt="img222"></a>
+              </div>
+              <div class="footer-main-text-title">
+                <a href="{% url 'more_news' new.slug %}">
+                  <i class="fa-solid fa-calendar-days"></i>
+                  <span>{{new.created_at|date:"H:i // d.m.Y"}}</span>
+                </a>
+              </div>
+              <div class="footer-main-text">
+                <a href="{% url 'more_news' new.slug %}">
+                 {{new.content|truncatechars:"200"}}
+                </a>
+              </div>
+
+            </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+      <!-- footer end  -->
+    </div>
+    {% else %}
+    <h3>{{category.name}} ga oid yangiliklar mavjud emas</h3>
+    {% endif %}
+    <!-- main-left end  -->
+    <div class="main-right">
+      <h4 class="main-news">
+        <i class="fa-solid fa-circle-dot"></i> So'nggi yangiliklar
+      </h4>
+      {% for lat in latestall %}
+      <div class="main-right-news">
+        <a href="{% url 'more_news' lat.slug %}">
+          <div class="main-time1">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>{{lat.created_at|date:"H:i // d.m.Y"}}</span>
+          </div>
+        </a>
+        <a href="{% url 'more_news' lat.slug %}">
+          <h5 class="main-right-title">{{lat.title}}</h5>
+        </a>
+      </div>
+      {% endfor %}
+      <div class="more-news">
+        <a href="#">Ko'proq yangiliklar</a>
+        <span><i class="fa-solid fa-arrow-right-long"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
